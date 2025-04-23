@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.black.mapper.YtOrderApplyMapper">
+
+
+    <!-- 通用查询结果列 -->
+    <select id="selectAll" resultType="com.black.entity.YtOrderApply" parameterType="com.black.entity.YtOrderApply">
+        select * from `yt_order_apply`
+        <where>
+            <if test="id!=null">
+                and `id` = #{id}
+            </if>
+            <if test="userId!=null">
+                and `user_id` = #{userId}
+            </if>
+            <if test="applyPrice!=null and applyPrice!=''">
+                and `apply_price` = #{applyPrice}
+            </if>
+            <if test="charge!=null and charge!=''">
+                and `charge` = #{charge}
+            </if>
+            <if test="realPrice!=null and realPrice!=''">
+                and `real_price` = #{realPrice}
+            </if>
+            <if test="state!=null and state!=''">
+                and `state` = #{state}
+            </if>
+            <if test="createTime!=null">
+                and `create_time` = #{createTime}
+            </if>
+            <if test="createBy!=null and createBy!=''">
+                and `create_by` = #{createBy}
+            </if>
+            <if test="updateTime!=null">
+                and `update_time` = #{updateTime}
+            </if>
+            <if test="updateBy!=null and updateBy!=''">
+                and `update_by` = #{updateBy}
+            </if>
+        </where>
+        order by `create_time` desc
+    </select>
+
+    <update id="updateAll" parameterType="com.black.entity.YtOrderApply">
+        update `yt_order_apply`
+        <set>
+            <if test="userId!=null">
+                `user_id` = #{userId},
+            </if>
+            <if test="applyPrice!=null and applyPrice!=''">
+                `apply_price` = #{applyPrice},
+            </if>
+            <if test="charge!=null and charge!=''">
+                `charge` = #{charge},
+            </if>
+            <if test="realPrice!=null and realPrice!=''">
+                `real_price` = #{realPrice},
+            </if>
+            <if test="state!=null and state!=''">
+                `state` = #{state},
+            </if>
+            <if test="createTime!=null">
+                `create_time` = #{createTime},
+            </if>
+            <if test="createBy!=null and createBy!=''">
+                `create_by` = #{createBy},
+            </if>
+            <if test="updateTime!=null">
+                `update_time` = #{updateTime},
+            </if>
+            <if test="updateBy!=null and updateBy!=''">
+                `update_by` = #{updateBy},
+            </if>
+        </set>
+        where `id` = #{id}
+    </update>
+</mapper>
